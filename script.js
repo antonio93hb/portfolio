@@ -27,3 +27,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+//Validación de los campos del formulario
+document.addEventListener("DOMContentLoaded", function () {
+    // Capturamos el formulario y el mensaje
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita el envío por defecto
+
+        // Capturamos los valores de los campos
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Comprobamos que los campos no estén vacíos
+        if (name === "" || email === "" || message === "") {
+            formMessage.textContent = "Por favor, completa todos los campos.";
+            formMessage.style.color = "red";
+            return;
+        }
+
+        // Validación del formato del email usando una expresión regular
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            formMessage.textContent = "Por favor, introduce un correo electrónico válido.";
+            formMessage.style.color = "red";
+            return;
+        }
+
+        // Si todo está bien, mostramos un mensaje de éxito
+        formMessage.textContent = "¡Mensaje enviado con éxito!";
+        formMessage.style.color = "green";
+
+        // Limpiamos los campos del formulario
+        form.reset();
+    });
+});
