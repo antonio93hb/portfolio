@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Mi Portafolio</title>
     <link rel="stylesheet" href="styless.css">
 </head>
@@ -21,12 +22,16 @@
 
     <section id="inicio">
         <h2>Bienvenido a mi Portafolio</h2>
+        <img src="portada.png" alt="Imagen de portada" class="portada-hero">
         <p>Aquí va una breve introducción sobre quién soy y qué hago</p>
     </section>
 
     <section id="sobreMi">
         <h2>Sobre mí</h2>
-        <p>Aquí va explicaré mi experiencia y mi formación</p>
+        <div class="sobre-mi-container">
+            <img src="perfil.png" alt="Foto de perfil" class="perfil">
+            <p>Aquí va explicaré mi experiencia y mi formación</p>
+        </div>
     </section>
 
     <section id="proyectos">
@@ -56,25 +61,67 @@
 
     <section id="contacto">
         <h2>Contacto</h2>
-        <form id="contactForm" action="https://formspree.io/f/mzzepory" method="POST">
+        <div class="contact-container">
+            <!-- ✅ Datos de contacto a la izquierda -->
+            <div class="contact-info">
+                <p>
+                  <i class="fas fa-envelope"></i> 
+                  <a href="mailto:antonio93hb@hotmail.com">antonio93hb@hotmail.com</a>
+                </p>
+                <p>
+                  <i class="fas fa-phone"></i>
+                  <a href="tel:+34605131900">+34 605 13 19 00</a>
+                </p>
 
-            <!-- Campo oculto para redirigir -->
-            <input type="hidden" name="_next" value="https://antonio93hb.github.io/portfolio/thanks.html">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio"> 
+                <!-- Enlaces rápidos a LinkedIn y GitHub con íconos -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/antonio-hernández-barbadilla-b49b81233" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/antonio93hb" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Formulario a la derecha -->
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mzzepory" method="POST">
 
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
+                <!-- Campo oculto para redirigir-->
+                <input type="hidden" name="_next" value="https://antonio93hb.github.io/thanks.html">
+                <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
     
-            <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
     
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
     
-            <button type="submit">Enviar</button>
-            <p id="formMessage"></p>
-        </form>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+    
+                <button type="submit">Enviar</button>
+                <p id="formMessage"></p>
+            </form>
+        </div>
     </section>
+
+    <footer id="footer">
+        <nav>
+            <ul>
+                <!-- Enlaces internos a tus secciones -->
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobreMi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                
+                <!-- Enlaces externos a tus redes -->
+                <li><a href="https://www.linkedin.com/in/antonio-hernández-barbadilla-b49b81233" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/antonio93hb" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+        <p>© 2025 Antonio Hernández Barbadilla. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 

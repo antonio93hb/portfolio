@@ -19,6 +19,15 @@ header {
     padding: 20px;
 }
 
+.portada-hero {
+    display: block;
+    margin: 0 auto;
+    width: 50%;      /* Ocupa el ancho completo del contenedor */
+    max-width: 800px;
+    height: auto;     /* Mantiene la proporción de la imagen */
+    border-radius: 5px;
+}
+
 h1 {
     margin: 0;
     font-size: 2em; /* Tamaño del título principal */
@@ -60,6 +69,20 @@ h2 {
 /* Estilos del enlace */
 nav ul li a:hover {
     text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+/* Estilo para la sección "Sobre mí" */
+.sobre-mi-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Foto redonda */
+    object-fit: cover;
+    border: 3px solid #000;
 }
 
 /* Estilos de la sección de proyectos */
@@ -144,6 +167,117 @@ button:hover {
 #formMessage {
     font-size: 1em;
     color: green;
+}
+
+/* ✅ Contenedor de contacto con dos columnas */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* ✅ Estilo para la información de contacto (columna izquierda) */
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.contact-info p {
+    font-size: 1em;
+    color: #555;
+}
+
+.contact-info a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Estilo para el formulario (columna derecha) */
+.contact-form {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-links {
+    margin-top: 10px;
+    display: flex;       /* Poner los enlaces en línea */
+    gap: 10px;           /* Separar cada enlace */
+    flex-wrap: wrap;     /* Que pasen a la siguiente línea si no caben */
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center; 
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-links a i {
+    margin-right: 5px;  /* Espacio entre icono y texto */
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/* Íconos de contacto info */
+.contact-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Alinear ícono y texto en la misma línea */
+}
+
+.contact-info i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+    color: #000;       /* Ajusta el color si quieres que sea diferente */
+}
+
+/* Pie de página */
+#footer {
+    background-color: #000; /* Fondo negro */
+    color: #fff;            /* Texto blanco */
+    text-align: center;     /* Centrar texto y enlaces */
+    padding: 20px;          /* Espacio interno */
+    margin-top: 40px;       /* Espacio encima del footer */
+}
+
+#footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;   /* Poner los enlaces en línea */
+    flex-wrap: wrap;        /* Que se acomoden en varias líneas si es necesario */
+    gap: 10px;              /* Espaciado entre enlaces */
+}
+
+#footer nav ul li {
+    margin: 0;
+}
+
+#footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+#footer nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#footer p {
+    margin: 10px 0 0;       /* Separar el texto de copyright */
+    font-size: 0.9em;
 }
 
 /* Diseño Responsivo */

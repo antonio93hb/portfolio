@@ -1,29 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Agrega un efecto de scroll suave cuando se hace clic en los enlaces del menú
-    document.querySelectorAll("nav ul li a").forEach(anchor => {
-        anchor.addEventListener("click", function (event) {
-            event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-            const targetId = this.getAttribute("href").substring(1); // Obtiene el ID de la sección de destino
-            const targetSection = document.getElementById(targetId); // Encuentra la sección en el documento
-            
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 20, // Desplaza la página hasta la sección deseada
-                    behavior: "smooth" // Aplica un efecto de desplazamiento suave
-                });
+    // Seleccionamos todos los enlaces del menú (y del footer)
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    navLinks.forEach(anchor => {
+        anchor.addEventListener("click", function(event) {
+            const hrefValue = anchor.getAttribute("href");
+
+            // Si el enlace empieza con "#", es un enlace interno
+            if (hrefValue.startsWith("#")) {
+                // Prevenimos el comportamiento predeterminado
+                event.preventDefault();
+                // Quitamos el "#" para obtener el ID de la sección
+                const targetId = hrefValue.substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 20,
+                        behavior: "smooth"
+                    });
+                }
             }
+            // Si NO empieza con "#", dejamos que se abra con normalidad (enlaces externos)
         });
     });
 
-    // Agrega un efecto de zoom a las tarjetas de proyectos cuando el mouse pasa sobre ellas
+    // Efecto de zoom a las tarjetas de proyectos
     document.querySelectorAll(".proyecto").forEach(proyecto => {
         proyecto.addEventListener("mouseenter", function () {
-            this.style.transform = "scale(1.05)"; // Aumenta el tamaño de la tarjeta ligeramente
-            this.style.transition = "transform 0.3s ease"; // Aplica una transición suave
+            this.style.transform = "scale(1.05)";
+            this.style.transition = "transform 0.3s ease";
         });
 
         proyecto.addEventListener("mouseleave", function () {
-            this.style.transform = "scale(1)"; // Restaura el tamaño original cuando el mouse se retira
+            this.style.transform = "scale(1)";
         });
     });
 });
@@ -57,6 +67,19 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        //  Detectar si está en local
+        if (window.location.hostname === "localhost" || window.location.protocol === "file:") {
+            formMessage.textContent = "Mensaje de prueba enviado (sin enviar a Formspree).";
+            formMessage.style.color = "blue";
+                    
+            setTimeout(() => {
+                window.location.href = "thanks.html";
+            }, 2000);
+            form.reset();
+            return;
+        }
+        
+        // 🔥 Solo enviará el formulario si NO está en local
         try {
             // Enviar el formulario manualmente mediante fetch()
             const response = await fetch("https://formspree.io/f/mzzepory", {
@@ -69,10 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 formMessage.textContent = "¡Mensaje enviado con éxito!";
                 formMessage.style.color = "green";
                 
-                // 🔥 Redirigir manualmente después de 2 segundos
+                // 🔥 Redirigir manualmente después de 1 segundos
                 setTimeout(() => {
                     window.location.href = "https://antonio93hb.github.io/portfolio/thanks.html";
-                }, 2000);
+                }, 1000);
                 
                 form.reset();
             } else {
@@ -83,7 +106,5 @@ document.addEventListener("DOMContentLoaded", function () {
             formMessage.textContent = "Error de red. Inténtalo de nuevo.";
             formMessage.style.color = "red";
         }
-        // Limpiamos los campos del formulario
-        form.reset();
     });
 });
