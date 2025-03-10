@@ -1,8 +1,16 @@
+/* Variables de color (opcional, si tu editor/compilador soporta CSS variables) */
+:root {
+    --bg-dark: #121212;        /* Fondo principal (negro) */
+    --bg-darker: #181818;      /* Negro un poco más claro para cajas */
+    --text-color: #fff;        /* Texto blanco */
+    --accent-color: #4db5ff;   /* Azul para detalles (ajusta a tu gusto) */
+}
+
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif; /* Fuente general */
-    background-color: #fff; /* Fondo blanco */
-    color: #000; /* Texto negro */
+    background-color: var(--bg-dark); 
+    color: var(--text-color); 
     margin: 0;
     padding: 0;
     text-align: center; /* Centrar texto globalmente */
@@ -10,8 +18,8 @@ body {
 
 /* Estilos del encabezado */
 header {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--bg-darker);
+    color: var(--text-color);
     padding: 20px 0;
     display: flex; /* Flexbox para alinear elementos */
     justify-content: space-between; /* Espaciado entre título y menú */
@@ -21,11 +29,13 @@ header {
 
 .portada-hero {
     display: block;
-    margin: 0 auto;
-    width: 50%;      /* Ocupa el ancho completo del contenedor */
+    margin: 20px auto;
     max-width: 800px;
-    height: auto;     /* Mantiene la proporción de la imagen */
+    width: 80%;
+    height: auto;
     border-radius: 5px;
+    /* Sombra sutil */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 h1 {
@@ -48,6 +58,7 @@ nav ul li {
 }
 
 nav ul li a {
+    color: var(--accent-color); 
     text-decoration: none;
     font-size: 1.2em;
 }
@@ -80,9 +91,10 @@ nav ul li a:hover {
 .perfil {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Foto redonda */
+    border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #000;
+    margin-right: 20px;
+    border: 2px solid var(--accent-color);
 }
 
 /* Estilos de la sección de proyectos */
@@ -94,11 +106,19 @@ nav ul li a:hover {
 }
 
 .proyecto {
-    background: #f5f5f5; /* Fondo gris claro */
+    background: var(--bg-darker); 
+    color: var(--text-color);
     padding: 20px;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     text-align: center;
     max-width: 300px;
+    margin: auto;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+.proyecto:hover {
+    background-color: #2a2a2a; /* Gris un poco más claro */
 }
 
 .proyecto img {
@@ -142,31 +162,34 @@ label {
 }
 
 input, textarea {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 10px;
-    border: 1px solid #ccc;
+    background-color: #1f1f1f; /* Gris oscuro */
+    color: var(--text-color); /* Texto blanco (o #fff) */
+    border: 1px solid #333;   /* Un borde sutil */
     border-radius: 5px;
+    padding: 10px;            /* Ajusta a tu gusto */
     font-size: 1em;
+    width: 100%;              /* Que ocupe todo el espacio del contenedor */
+    box-sizing: border-box;   /* Para que padding no rompa el layout */
 }
 
 button {
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--accent-color);
+    color: #000; /* Contraste sobre el azul */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #333;
+    background-color: #66cfff; /* Un azul un poco más claro */
 }
 
 #formMessage {
     font-size: 1em;
-    color: green;
+    color: white;
 }
 
 /* ✅ Contenedor de contacto con dos columnas */
@@ -186,11 +209,11 @@ button:hover {
 
 .contact-info p {
     font-size: 1em;
-    color: #555;
+    color: #fff;
 }
 
 .contact-info a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -218,7 +241,7 @@ button:hover {
 .social-links a {
     display: inline-flex;
     align-items: center; 
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -240,7 +263,7 @@ button:hover {
 
 .contact-info i {
     margin-right: 8px; /* Espacio entre el ícono y el texto */
-    color: #000;       /* Ajusta el color si quieres que sea diferente */
+    color: #fff;       /* Ajusta el color si quieres que sea diferente */
 }
 
 /* Pie de página */
@@ -302,6 +325,10 @@ button:hover {
     }
     
     section {
-        padding: 30px; /* Reducir padding en móviles */
-    }
+        padding: 50px;
+        border-bottom: none; 
+        max-width: 900px;
+        margin: auto;
+        text-align: left;
+        background-color: transparent; /* Fondo transparente, se ve el black de body */    }
 }
