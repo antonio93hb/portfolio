@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
 
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit",async function(event) {
         event.preventDefault(); // Evita el envío por defecto
 
         // Capturamos los valores de los campos
@@ -57,10 +57,32 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Si todo está bien, mostramos un mensaje de éxito
-        formMessage.textContent = "¡Mensaje enviado con éxito!";
-        formMessage.style.color = "green";
+        try {
+            // Enviar el formulario manualmente mediante fetch()
+            const response = await fetch("https://formspree.io/f/mzzepory", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, message })
+            });
 
+            if (response.ok) {
+                formMessage.textContent = "¡Mensaje enviado con éxito!";
+                formMessage.style.color = "green";
+                
+                // 🔥 Redirigir manualmente después de 2 segundos
+                setTimeout(() => {
+                    window.location.href = "https://antonio93hb.github.io/portfolio/thanks.html";
+                }, 2000);
+                
+                form.reset();
+            } else {
+                formMessage.textContent = "Hubo un error al enviar el mensaje.";
+                formMessage.style.color = "red";
+            }
+        } catch (error) {
+            formMessage.textContent = "Error de red. Inténtalo de nuevo.";
+            formMessage.style.color = "red";
+        }
         // Limpiamos los campos del formulario
         form.reset();
     });
