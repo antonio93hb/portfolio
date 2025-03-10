@@ -108,3 +108,41 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const texts = [
+        " iOS Developer ",
+        "💻 Aplicaciones Web 💻",
+        "📱 Aplicaciones Multiplataforma 📱",
+    ];
+    const typingSpeed = 100; // Velocidad de escritura
+    const erasingSpeed = 50; // Velocidad de borrado
+
+    let currentTextIndex = 0; // Índice del texto actual
+    let charIndex = 0; // Índice del carácter actual
+    const textElement = document.getElementById("text-borrado");
+
+    function typeText() {
+        if (charIndex < texts[currentTextIndex].length) {
+            textElement.textContent += texts[currentTextIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+        } else {
+            // Pausa antes de borrar
+            setTimeout(eraseText, 1000);
+        }
+    }
+
+    function eraseText() {
+        if (charIndex > 0) {
+            textElement.textContent = texts[currentTextIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(eraseText, erasingSpeed);
+        } else {
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            setTimeout(typeText, typingSpeed);
+        }
+    }
+
+    typeText();
+});
