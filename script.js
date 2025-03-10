@@ -57,6 +57,19 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        //  Detectar si está en local
+        if (window.location.hostname === "localhost" || window.location.protocol === "file:") {
+            formMessage.textContent = "Mensaje de prueba enviado (sin enviar a Formspree).";
+            formMessage.style.color = "blue";
+                    
+            setTimeout(() => {
+                window.location.href = "thanks.html";
+            }, 2000);
+            form.reset();
+            return;
+        }
+        
+        // 🔥 Solo enviará el formulario si NO está en local
         try {
             // Enviar el formulario manualmente mediante fetch()
             const response = await fetch("https://formspree.io/f/mzzepory", {
@@ -69,10 +82,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 formMessage.textContent = "¡Mensaje enviado con éxito!";
                 formMessage.style.color = "green";
                 
-                // 🔥 Redirigir manualmente después de 2 segundos
+                // 🔥 Redirigir manualmente después de 1 segundos
                 setTimeout(() => {
                     window.location.href = "https://antonio93hb.github.io/portfolio/thanks.html";
-                }, 2000);
+                }, 1000);
                 
                 form.reset();
             } else {
@@ -83,7 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
             formMessage.textContent = "Error de red. Inténtalo de nuevo.";
             formMessage.style.color = "red";
         }
-        // Limpiamos los campos del formulario
-        form.reset();
     });
 });

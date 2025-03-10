@@ -56,24 +56,33 @@
 
     <section id="contacto">
         <h2>Contacto</h2>
-        <form id="contactForm" action="https://formspree.io/f/mzzepory" method="POST">
+        <div class="contact-container">
+            <!-- ✅ Datos de contacto a la izquierda -->
+            <div class="contact-info">
+                <p><strong>Correo electrónico:</strong> <a href="mailto:antonio93hb@hotmail.com">antonio93hb@hotmail.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34605131900">+34 605 13 19 00</a></p>
+            </div>
+    
+            <!-- ✅ Formulario a la derecha -->
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mzzepory" method="POST">
 
-            <!-- Campo oculto para redirigir -->
-            <input type="hidden" name="_next" value="https://antonio93hb.github.io/portfolio/thanks.html">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio"> 
-
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
+                <!-- Campo oculto para redirigir-->
+                <input type="hidden" name="_next" value="https://antonio93hb.github.io/thanks.html">
+                <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
     
-            <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
     
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
     
-            <button type="submit">Enviar</button>
-            <p id="formMessage"></p>
-        </form>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+    
+                <button type="submit">Enviar</button>
+                <p id="formMessage"></p>
+            </form>
+        </div>
     </section>
 
     <script src="script.js"></script>
