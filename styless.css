@@ -1,8 +1,16 @@
+/* Variables de color (opcional, si tu editor/compilador soporta CSS variables) */
+:root {
+    --bg-dark: #121212;        /* Fondo principal (negro) */
+    --bg-darker: #181818;      /* Negro un poco más claro para cajas */
+    --text-color: #fff;        /* Texto blanco */
+    --accent-color: #4db5ff;   /* Azul para detalles (ajusta a tu gusto) */
+}
+
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif; /* Fuente general */
-    background-color: #fff; /* Fondo blanco */
-    color: #000; /* Texto negro */
+    background-color: var(--bg-dark); 
+    color: var(--text-color); 
     margin: 0;
     padding: 0;
     text-align: center; /* Centrar texto globalmente */
@@ -10,8 +18,8 @@ body {
 
 /* Estilos del encabezado */
 header {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--bg-darker);
+    color: var(--text-color);
     padding: 20px 0;
     display: flex; /* Flexbox para alinear elementos */
     justify-content: space-between; /* Espaciado entre título y menú */
@@ -19,13 +27,44 @@ header {
     padding: 20px;
 }
 
+.nombre-hover {
+    color: var(--text-color);
+    transition: color 0.3s ease; /* transición suave */
+    cursor: pointer; /* indica interacción al usuario */
+}
+
+.nombre-hover:hover {
+    color: var(--accent-color); /* Cambia a azul al pasar el ratón */
+}
+
 .portada-hero {
     display: block;
-    margin: 0 auto;
-    width: 50%;      /* Ocupa el ancho completo del contenedor */
+    margin: 20px auto;
     max-width: 800px;
-    height: auto;     /* Mantiene la proporción de la imagen */
+    width: 80%;
+    height: auto;
     border-radius: 5px;
+    /* Sombra sutil */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+.text-container-borrado {
+font-size: 2rem;
+text-align: center;
+margin-top: 50px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 5px;
+    height: 1.5rem;
+    background-color: #333;
+    animation: blink 0.6s steps(2,start) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 h1 {
@@ -48,6 +87,7 @@ nav ul li {
 }
 
 nav ul li a {
+    color: var(--accent-color); 
     text-decoration: none;
     font-size: 1.2em;
 }
@@ -80,9 +120,81 @@ nav ul li a:hover {
 .perfil {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Foto redonda */
+    border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #000;
+    margin-right: 20px;
+    border: 2px solid var(--accent-color);
+}
+
+.tech-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 2em;
+    color: var(--text-color);
+    position: relative;
+}
+
+.tech-list li:hover {
+    color: var(--accent-color);
+}
+
+.tech-list li span {
+    font-size: 0.4em; /* Letra pequeña */
+}
+
+.swift-special {
+    color: var(--accent-color); /* Siempre azul */
+    font-size: 2.5em; /* Más grande */
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.swift-special i {
+    color: var(--accent-color); /* Azul desde el inicio */
+    transition: color 0.3s ease;
+    font-size: 1.5em; /* Ícono más grande que los otros */
+}
+
+.swift-special span {
+    font-weight: bold;
+    color: var(--accent-color); /* Siempre azul también */
+    font-size: 0.4em; /* Pequeño y elegante */
+    margin-top: 5px;
+}
+
+.swift-special::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    bottom: -5px;
+    left: 0;
+    border-radius: 5px;
+}
+/* Al pasar el cursor (opcional: cambia ligeramente a más claro para dar interacción) */
+.swift-special:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+    color: #66cfff; /* Azul más claro */
+}
+
+.swift-special:hover span {
+    color: #66cfff; /* Azul más claro también para el texto */
 }
 
 /* Estilos de la sección de proyectos */
@@ -94,11 +206,19 @@ nav ul li a:hover {
 }
 
 .proyecto {
-    background: #f5f5f5; /* Fondo gris claro */
+    background: var(--bg-darker); 
+    color: var(--text-color);
     padding: 20px;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     text-align: center;
     max-width: 300px;
+    margin: auto;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+.proyecto:hover {
+    background-color: #2a2a2a; /* Gris un poco más claro */
 }
 
 .proyecto img {
@@ -142,31 +262,35 @@ label {
 }
 
 input, textarea {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 10px;
-    border: 1px solid #ccc;
+    background-color: #1f1f1f; /* Gris oscuro */
+    color: var(--text-color); /* Texto blanco (o #fff) */
+    border: 1px solid #333;   /* Un borde sutil */
     border-radius: 5px;
+    padding: 10px;            /* Ajusta a tu gusto */
     font-size: 1em;
+    width: 100%;              /* Que ocupe todo el espacio del contenedor */
+    box-sizing: border-box;   /* Para que padding no rompa el layout */
 }
 
 button {
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
+    background-color: #3292d4;
+    color: #fff; 
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #333;
+    background-color: var(--accent-color); /* Un azul un poco más claro */
 }
 
 #formMessage {
     font-size: 1em;
-    color: green;
+    color: white;
 }
 
 /* ✅ Contenedor de contacto con dos columnas */
@@ -186,11 +310,11 @@ button:hover {
 
 .contact-info p {
     font-size: 1em;
-    color: #555;
+    color: #fff;
 }
 
 .contact-info a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -199,14 +323,6 @@ button:hover {
     text-decoration: underline;
 }
 
-/* ✅ Estilo para el formulario (columna derecha) */
-.contact-form {
-    flex: 1;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 .social-links {
     margin-top: 10px;
@@ -218,7 +334,7 @@ button:hover {
 .social-links a {
     display: inline-flex;
     align-items: center; 
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -240,7 +356,15 @@ button:hover {
 
 .contact-info i {
     margin-right: 8px; /* Espacio entre el ícono y el texto */
-    color: #000;       /* Ajusta el color si quieres que sea diferente */
+    color: var(--accent-color);       /* Ajusta el color si quieres que sea diferente */
+}
+/* ✅ Estilo para el formulario (columna derecha) */
+.contact-form {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 /* Pie de página */
@@ -302,6 +426,70 @@ button:hover {
     }
     
     section {
-        padding: 30px; /* Reducir padding en móviles */
+        padding: 50px;
+        border-bottom: none; 
+        max-width: 900px;
+        margin: auto;
+        text-align: left;
+        background-color: transparent; /* Fondo transparente, se ve el black de body */    }
+}
+
+.thanks-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la ventana */
+    background-color: var(--bg-dark); /* O el color que quieras */
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+}
+
+.thanks-container {
+    background: var(--bg-darker); /* Un gris oscuro (#181818) */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra sutil en modo oscuro */
+    animation: fadeIn 0.6s ease-in-out;
+    max-width: 600px; /* Ajusta ancho máximo */
+    margin: auto;
+}
+
+.thanks-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--text-color); 
+}
+
+.thanks-container p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #ccc; /* O var(--text-color) si quieres blanco */
+}
+
+.thanks-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: #000; /* Contraste sobre el azul */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.thanks-container a:hover {
+    background-color: #66cfff; /* Un azul más claro */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
