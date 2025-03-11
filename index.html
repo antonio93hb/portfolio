@@ -50,19 +50,45 @@
                 <li><i class="fab fa-php"></i><span>PHP</span></li>
                 <li><i class="fab fa-git-alt"></i><span>Git</span></li>
                 <li><i class="fab fa-github"></i><span>Github</span></li>
-
             </ul>
         </div>
         <div class="gitcv-container">
             <img src="gitCV-2.png" alt="Imagen Git CV" id="git-image">
-            <div class="git-log">
-                <div class="git-log-title">$ git log --oneline --project "DeveloperProject"</div>
-                <div class="git-commit commit-main">a1b2c3d (HEAD -> main) Added iOS Developer at ALTEN</div>
-                <div class="git-commit commit-daw">h7i8j9k (feature/daw) Completed DAW (IFP) degree</div>
-                <div class="git-commit commit-iosDeveloperAlten">l1m2n3o (feature/iosDeveloperAlten) Started working at ALTEN</div>
-                <div class="git-commit commit-dam">p1q2r3s (feature/dam) Started DAM (IFP) degree</div>
-                <div class="git-commit commit-swiftDeveloperProgram">t4u5v6w (feature/swiftDeveloperProgram) Enrolled in Swift Developer Program (Apple Coding Academy)</div>
+            <div class="git-info-container">
+                <p class="titulo-proyecto">Proyecto Developer de Antonio Hernández</p>
+                <div class="git-log">
+                
+                    <div class="git-log-title">$ git log --oneline --project "DeveloperProject"</div>
+                
+                    <div class="git-commit commit-main" 
+                        data-description="Mergeamos a la rama Main todo lo aprendido hasta aquí, de mi grado superior en Desarrollo de Aplicaciones WEB y toda la experiencia adquirida en ALTEN trabajando de iOS Developer, donde participé en un proyecto internacional.">
+                        a1b2c3d (HEAD -> main) Added iOS Developer at ALTEN
+                    </div>
+                
+                    <div class="git-commit commit-daw"
+                        data-description="Completé mi Grado Superior en Desarrollo de Aplicaciones Web (DAW), adquiriendo habilidades en HTML, CSS, JS, PHP y bases de datos.">
+                        h7i8j9k (feature/daw) Completed DAW (IFP) degree
+                    </div>
+                
+                    <div class="git-commit commit-iosDeveloperAlten"
+                        data-description="Inicio de mi etapa profesional en ALTEN como desarrollador especializado en iOS, Swift, UIKit, SwiftUI y Objective-C.">
+                        l1m2n3o (feature/iosDeveloperAlten) Started working at ALTEN
+                    </div>
+                
+                    <div class="git-commit commit-dam"
+                        data-description="Empecé el grado superior en Desarrollo de Aplicaciones Multiplataforma (DAM) para profundizar en desarrollo nativo. Actualmente estoy muy cerca de finalizarlo.">
+                        p1q2r3s (feature/dam) Started DAM (IFP) degree
+                    </div>
+                
+                    <div class="git-commit commit-swiftDeveloperProgram"
+                        data-description="Me especializo aun más en Swift y SwiftUI en la prestigiosa Apple Coding Academy para perfeccionar mi conocimiento en el desarrollo del entorno Apple.">
+                        t4u5v6w (feature/swiftDeveloperProgram) Enrolled in Swift Developer Program (Apple Coding Academy)
+                    </div>
+                </div>
             </div>
+            
+            <!-- Caja para mostrar descripción al hacer click -->
+            <div id="commit-description" class="commit-description-box"></div>
         </div>
 
     </section>

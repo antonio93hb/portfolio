@@ -205,13 +205,32 @@ nav ul li a:hover {
     color: #66cfff; /* Azul más claro también para el texto */
 }
 
+
 .gitcv-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 15px; /* Espacio entre imagen y log */
     margin-top: 30px;
     flex-wrap: nowrap; /* No permite saltar línea */
+}
+
+.git-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* aumenta el espacio entre título y terminal */
+    flex-grow: 1;
+    justify-content: flex-start; /* alinea desde arriba */
+}
+
+.titulo-proyecto {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 0;        /* elimina margen superior */
+    margin-bottom: 10px;  /* ligero margen inferior */
+    font-weight: bold;
 }
 
 .gitcv-container img {
@@ -328,14 +347,38 @@ nav ul li a:hover {
 }
 
 .git-commit {
+    cursor: pointer; /* Indica claramente que es clicable */
+    transition: transform 0.2s ease, background-color 0.2s ease;
     padding: 5px 0;
     border-bottom: 1px solid #333;
+    border-radius: 4px;
     font-size: 0.9rem;
     font-weight: bold;
+}
+.git-commit:hover {
+    transform: translateX(8px); /* Desplaza ligeramente hacia la derecha al pasar el ratón */
+    background-color: rgba(77, 181, 255, 0.1); /* Fondo azul claro translúcido */
+}
+
+.git-commit:active {
+    transform: translateX(4px); /* Efecto al hacer clic */
+    background-color: rgba(77, 181, 255, 0.3);
 }
 
 .git-commit:last-child {
     border-bottom: none;
+}
+
+.git-commit::before {
+    content: '➜';
+    color: var(--accent-color);
+    margin-right: 8px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.git-commit:hover::before {
+    opacity: 1;
 }
 
 /* Animación para simular el scroll del log */
@@ -344,6 +387,45 @@ nav ul li a:hover {
     100% { transform: translateY(-100%); }
 }
 
+.commit-description-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--bg-darker);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    display: none; /* Oculto inicialmente */
+    max-width: 600px;
+}
+
+.commit-description-box.visible {
+    display: block;
+}
+
+.commit-description {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #1e1e1e;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 5px;
+    font-size: 0.85em;
+    color: #ddd;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 /* Estilos de la sección de proyectos */
 .proyectos-container {
     display: flex; /* Organiza los proyectos en fila */
