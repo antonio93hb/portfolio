@@ -146,3 +146,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeText();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const commits = document.querySelectorAll('.git-commit');
+
+    commits.forEach(commit => {
+        commit.addEventListener('click', function () {
+            const description = this.querySelector('.commit-description');
+
+            // Si ya está abierto, lo cerramos
+            if (description) {
+                description.remove();
+                return;
+            }
+
+            // Primero, cerramos cualquier otra descripción abierta
+            document.querySelectorAll('.commit-description').forEach(desc => desc.remove());
+
+            // Creamos una nueva descripción
+            const newDescription = document.createElement('div');
+            newDescription.classList.add('commit-description');
+            newDescription.textContent = this.getAttribute('data-description');
+
+            this.appendChild(newDescription);
+        });
+    });
+});
