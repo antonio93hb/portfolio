@@ -51,6 +51,7 @@ header {
 font-size: 2rem;
 text-align: center;
 margin-top: 50px;
+min-height: 50px; 
 }
 
 .cursor {
@@ -104,6 +105,13 @@ section {
 h2 {
     font-size: 1.8em;
     margin-bottom: 20px;
+}
+
+.tech-highlight {
+    font-size: 1.2em;
+    color: var(--accent-color);
+    margin-top: 15px;
+    text-align: center;
 }
 
 /* Estilos del enlace */
@@ -195,6 +203,146 @@ nav ul li a:hover {
 
 .swift-special:hover span {
     color: #66cfff; /* Azul más claro también para el texto */
+}
+
+.gitcv-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    gap: 0; /* Espacio entre imagen y leyenda */
+    flex-wrap: wrap; /* para dispositivos móviles */
+    margin-top: 30px;
+}
+
+.gitcv-container img {
+    height: 500px;
+    width: auto;            /* Esto evita deformaciones */
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .gitcv-container {
+        flex-direction: column;
+    }
+
+    .gitcv-container img {
+        height: auto;      /* Altura automática para que escale proporcionalmente */
+        width: 10%;        /* Ocupa el 90% del ancho del contenedor */
+        max-width: 40px;  /* Ancho máximo para no ser demasiado grande */
+        margin-bottom: 20px; /* Espaciado con la leyenda */
+    }
+
+    .leyenda {
+        text-align: center; /* Centrar leyenda en móviles para mejorar aspecto */
+    }
+}
+
+
+.gitcv-container ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.gitcv-container li {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .gitcv-container {
+        flex-direction: column;
+    }
+
+    .gitcv-container img {
+        width: 80%;
+    }
+}
+#git-image {
+    height: 500px;
+}
+
+.leyenda {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Elimina margen extra para que quede más pegado */
+    text-align: left;
+    font-size: 1.1em;
+    max-width: 400px; /* Define un ancho máximo para acercarla */
+}
+
+.leyenda li {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 20px;
+}
+
+.leyenda li::before {
+    content: '•';
+    color: var(--accent-color); /* mismo azul que los detalles */
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+#main {
+    color: #ffa427;
+}
+
+#develop {
+    color: #9231e8;
+}
+
+#daw {
+    color: #028cfa;
+}
+
+#iosDeveloperAlten{
+    color: #ff1414;
+}
+
+#dam{
+    color: #e3518c;
+}
+
+#swiftDeveloperProgamACC{
+    color: #00ab33 ;
+}
+
+.git-log {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 8px;
+    margin-top: 20px;
+    max-width: 600px;
+    overflow-y: auto;
+    height: 200px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.git-log-title {
+    color: #4db5ff;
+    margin-bottom: 10px;
+}
+
+.git-commit {
+    padding: 5px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+.git-commit:last-child {
+    border-bottom: none;
+}
+
+/* Animación para simular el scroll del log */
+@keyframes scrollLog {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
 }
 
 /* Estilos de la sección de proyectos */
