@@ -207,11 +207,11 @@ nav ul li a:hover {
 
 .gitcv-container {
     display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    gap: 0; /* Espacio entre imagen y leyenda */
-    flex-wrap: wrap; /* para dispositivos móviles */
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px; /* Espacio entre imagen y log */
     margin-top: 30px;
+    flex-wrap: nowrap; /* No permite saltar línea */
 }
 
 .gitcv-container img {
@@ -219,24 +219,34 @@ nav ul li a:hover {
     width: auto;            /* Esto evita deformaciones */
 }
 
+#git-image {
+    height: 500px;
+    width: auto;
+    max-width: 100%;
+    flex-shrink: 0; /* Evita que la imagen reduzca demasiado su ancho */
+}
+
 /* Media Query para pantallas pequeñas */
 @media (max-width: 768px) {
     .gitcv-container {
-        flex-direction: column;
+        flex-direction: row; /* Mantiene siempre en fila */
+        align-items: flex-start; /* Alinea desde arriba */
+        justify-content: flex-start; /* Alinea desde la izquierda */
+        overflow-x: auto; /* Permite scroll horizontal en caso necesario */
+        padding-bottom: 10px;
     }
 
-    .gitcv-container img {
-        height: auto;      /* Altura automática para que escale proporcionalmente */
-        width: 10%;        /* Ocupa el 90% del ancho del contenedor */
-        max-width: 40px;  /* Ancho máximo para no ser demasiado grande */
-        margin-bottom: 20px; /* Espaciado con la leyenda */
+    #git-image {
+        height: auto;
+        max-height: 250px;
+        width: auto;
     }
 
-    .leyenda {
-        text-align: center; /* Centrar leyenda en móviles para mejorar aspecto */
+    .git-log {
+        width: 100%; /* Aprovecha el resto del espacio disponible */
+        font-size: 0.8rem; /* Ajusta ligeramente el tamaño para móviles */
     }
 }
-
 
 .gitcv-container ul {
     list-style: none;
@@ -252,62 +262,46 @@ nav ul li a:hover {
 
 @media (max-width: 768px) {
     .gitcv-container {
-        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
     }
 
-    .gitcv-container img {
-        width: 80%;
+    #git-image {
+        height: auto;
+        max-height: 300px; /* altura máxima en móviles */
+        width: auto;
+    }
+
+    .git-log {
+        font-size: 0.75rem; /* reducir ligeramente el texto */
+        padding: 10px;
     }
 }
-#git-image {
-    height: 500px;
-}
 
-.leyenda {
-    list-style: none;
-    padding: 0;
-    margin: 0; /* Elimina margen extra para que quede más pegado */
-    text-align: left;
-    font-size: 1.1em;
-    max-width: 400px; /* Define un ancho máximo para acercarla */
-}
-
-.leyenda li {
-    margin-bottom: 10px;
-    color: var(--text-color);
-    position: relative;
-    padding-left: 20px;
-}
-
-.leyenda li::before {
-    content: '•';
-    color: var(--accent-color); /* mismo azul que los detalles */
-    font-weight: bold;
-    margin-right: 8px;
-}
-
-#main {
+/* Colores específicos para los commits en el git-log */
+.commit-main {
     color: #ffa427;
 }
 
-#develop {
-    color: #9231e8;
-}
-
-#daw {
+.commit-daw {
     color: #028cfa;
 }
 
-#iosDeveloperAlten{
+.commit-iosDeveloperAlten {
     color: #ff1414;
 }
 
-#dam{
+.commit-dam {
     color: #e3518c;
 }
 
-#swiftDeveloperProgamACC{
-    color: #00ab33 ;
+.commit-swiftDeveloperProgram {
+    color: #00ab33;
+}
+
+/* Fuente bold común a todos los commits */
+.git-commit {
+    font-weight: bold;
 }
 
 .git-log {
@@ -322,17 +316,22 @@ nav ul li a:hover {
     height: 200px;
     border: 1px solid #333;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 100%;
+    flex-grow: 1;   /* El git-log toma el espacio sobrante */
+    overflow: auto;
 }
 
 .git-log-title {
     color: #4db5ff;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .git-commit {
     padding: 5px 0;
     border-bottom: 1px solid #333;
     font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .git-commit:last-child {
